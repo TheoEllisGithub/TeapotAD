@@ -9,16 +9,15 @@ uniform vec3 Kd;            // Diffuse reflectivity
 uniform vec3 Ld;            // Diffuse light intensity
 
 uniform vec3 La;
-
 uniform vec3 Ka;
 
-uniform vec3 Ko;
-
-uniform vec3 Ks;
-
-uniform vec3 Ls;
+uniform vec3 Ks;    //specular reflection coefficient
+uniform vec3 N;     //surface normal at p
+uniform vec3 L;     //light intensity
 
 //LA, KA, LD, KO, KS, LS
+
+
 
 // complete to a full phong shading
 layout( location = 0 ) out vec4 FragColour;
@@ -44,4 +43,5 @@ void main() {
 
 //Ambient = LA * KA
 	//Diffus = LD * KO * COS()
-	//Secular = KS*LS*COS (power n) ()
+	//Secular = KS*LS*COS (power n) () ---------- Ks * Ls * cos n (p)
+	//P = ANGLE between V and R (Use lab sheet)
