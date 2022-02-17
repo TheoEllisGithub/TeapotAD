@@ -38,6 +38,8 @@ void main() {
 
    FragColour = vec4(Kd,1.0) * Id + vec4(La, 1.0) * vec4(Ka, 1.0);
 
+   //FragColour = vec4(Ks, 1.0) * vec4(Ls, 1.0);
+
 }
 
 
