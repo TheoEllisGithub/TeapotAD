@@ -73,15 +73,19 @@ void SceneDiffuse::setLightParams(QuatCamera camera)
 	//Diffus = LD * KO * COS()
 	//Secular = KS*LS*COS (power n) ()
 
-	vec3 worldLight = vec3(0.0f,10.0f,10.0f);  
+	vec3 worldLight = vec3(0.0f,10.0f,10.0f); 
+
 	
 	prog.setUniform("Ld", 0.9f, 0.9f, 0.9f);// RGB (Red, green ,blue)
 	
 	prog.setUniform("La", 0.5f, 0.5f, 0.5f);
 
 	
+	prog.setUniform("Ls", 0.5f, 0.5f, 0.5f);
 
 	prog.setUniform("LightPosition", worldLight );
+
+	
 
 }
 
@@ -101,6 +105,7 @@ void SceneDiffuse::render(QuatCamera camera)
 	//Set the plane's material properties in the shader and render
 	prog.setUniform("Kd", 0.51f, 1.0f, 0.49f); // What elements does Kd have?
 	prog.setUniform("Ka", 0.51f, 1.0f, 0.49f);
+	
 	plane->render();// what does it do?
 
 	//Now set up the teapot 
@@ -109,8 +114,11 @@ void SceneDiffuse::render(QuatCamera camera)
 	 //Set the Teapot material properties in the shader and render
 	 prog.setUniform("Kd", 0.46f, 0.29f, 0.0f); // What elements does Kd have?
 	 prog.setUniform("Ka", 0.46f, 0.29f, 0.0f);
-	 teapot->render(); // what does it do?
-	
+	 prog.setUniform("Ks", 0.46f, 0.29f, 0.0f);
+
+
+	 teapot->render(); // what does it do?	 
+
 }
 
 
@@ -127,7 +135,8 @@ void SceneDiffuse::setMatrices(QuatCamera camera)
 	mat3 normMat = glm::transpose(glm::inverse(mat3(model)));// What does this line do?
 	prog.setUniform("M", model);
 	prog.setUniform("V", camera.view() );
-	prog.setUniform("P", camera.projection() );
+	prog.setUniform("cameraPosition", camera.position());
+	prog.setUniform("P", camera.projection());
 
 	
 }
