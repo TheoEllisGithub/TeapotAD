@@ -137,7 +137,9 @@ void SceneDiffuse::setMatrices(QuatCamera camera)
 	prog.setUniform("V", camera.view() );
 	prog.setUniform("cameraPosition", camera.position());
 	prog.setUniform("P", camera.projection());
-
+	
+	//N and L
+	//prog.setUniform("R", glm::reflect(  ))
 	
 }
 

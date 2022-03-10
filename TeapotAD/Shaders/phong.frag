@@ -21,7 +21,6 @@ in vec3 cameraPosition;
 vec3 playerVision = cameraPosition - vertPos;
 
 
-uniform vec3 R;   //lightPos, vertPos,   (reflection)
 
 //LA, KA, LD, KO, KS, LS
 
@@ -45,7 +44,11 @@ void main() {
 
    //FragColour = vec4(La, 1.0) * vec4(Ka, 1.0);    //Ambient
 
-   
+
+
+   vec3 R;   //lightPos, vertPos,   (reflection)
+
+   R = glm::reflect(L, N);
    
    FragColour = vec4(Ks,1.0) * vec4(Ls, 1.0);      //specular
 
