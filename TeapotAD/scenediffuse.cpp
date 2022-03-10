@@ -73,7 +73,7 @@ void SceneDiffuse::setLightParams(QuatCamera camera)
 	//Diffus = LD * KO * COS()
 	//Secular = KS*LS*COS (power n) ()
 
-	vec3 worldLight = vec3(0.0f,10.0f,10.0f); 
+	vec3 worldLight = vec3(5.0f,5.0f,5.0f); 
 
 	
 	prog.setUniform("Ld", 0.9f, 0.9f, 0.9f);// RGB (Red, green ,blue)
@@ -86,7 +86,7 @@ void SceneDiffuse::setLightParams(QuatCamera camera)
 
 	prog.setUniform("LightPosition", worldLight );
 
-	
+
 
 }
 
@@ -106,7 +106,8 @@ void SceneDiffuse::render(QuatCamera camera)
 	//Set the plane's material properties in the shader and render
 	prog.setUniform("Kd", 0.51f, 1.0f, 0.49f); // What elements does Kd have?
 	prog.setUniform("Ka", 0.51f, 1.0f, 0.49f);
-	
+	prog.setUniform("Ks", 0.51f, 1.0f, 0.0f);
+
 	plane->render();// what does it do?
 
 	//Now set up the teapot 
