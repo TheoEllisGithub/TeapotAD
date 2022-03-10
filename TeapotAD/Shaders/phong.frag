@@ -46,11 +46,13 @@ void main() {
 
 
 
-   vec3 R;   //lightPos, vertPos,   (reflection)
+   vec3 R = reflect(-L, N);   //lightPos, vertPos,   (reflection)
 
-   R = glm::reflect(L, N);
+   float P = dot(normalize(R), normalize(cameraPosition));
+
    
-   FragColour = vec4(Ks,1.0) * vec4(Ls, 1.0);      //specular
+
+   FragColour = vec4(Ks,1.0) * vec4(Ls, 1.0) * pow(P, 5) ;      //specular
 
    //FragColour = vec4(Kd,1.0) * Id + vec4(La, 1.0) * vec4(Ka, 1.0);
 

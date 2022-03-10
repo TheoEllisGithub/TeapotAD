@@ -81,6 +81,7 @@ void SceneDiffuse::setLightParams(QuatCamera camera)
 	prog.setUniform("La", 0.5f, 0.5f, 0.5f);
 
 	
+
 	prog.setUniform("Ls", 0.5f, 0.5f, 0.5f);
 
 	prog.setUniform("LightPosition", worldLight );
