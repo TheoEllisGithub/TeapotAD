@@ -41,19 +41,23 @@ void main() {
 
    //Multiply the Reflectivity by the Diffuse intensity
 
-   //FragColour = vec4(Kd,1.0) * Id;                //Diffuse
-
-   //FragColour = vec4(La, 1.0) * vec4(Ka, 1.0);    //Ambient
-
-
-
+   
    vec3 R = reflect(-L, N);   //lightPos, vertPos,   (reflection)
 
    
    float newP = dot(normalize(R), normalize(playerVision));
 
-   
+
+   //////////////////////////////////////////////////////////////////////////
+
+   //FragColour = vec4(Kd,1.0) * Id;                //Diffuse
+
+   //FragColour = vec4(La, 1.0) * vec4(Ka, 1.0);    //Ambient
+
    FragColour = vec4(Ks,1.0) * vec4(Ls, 1.0) * pow(newP, 10) ;      //specular
+
+   //////////////////////////////////////////////////////////////////////////
+
 
    //FragColour = vec4(Kd,1.0) * Id + vec4(La, 1.0) * vec4(Ka, 1.0);
 
