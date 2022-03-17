@@ -57,13 +57,13 @@ void main() {
 
    //FragColour = Id2 * vec4(Ka, 1.0);						//Ambient
 
-   FragColour = vec4(Ks,1.0) * Id3 * pow(newP, 10) ;        //specular
+   //FragColour = vec4(Ks,1.0) * Id3 * pow(newP, 10) ;        //specular
 
 
    //////////////////////////////////////////////////////////////////////////
 
-   //They dont work together, this is frustrating
-   //FragColour = (vec4(Kd,1.0) * Id) + (Id2 * vec4(Ka, 1.0)) + (vec4(Ks,1.0) * Id3 * pow(newP, 10));
+   
+   FragColour = (vec4(Kd,1.0) * Id) + (Id2 * vec4(Ka, 1.0)) + (vec4(Ks,1.0) * Id3 * pow(newP, 1));
 
    
 }

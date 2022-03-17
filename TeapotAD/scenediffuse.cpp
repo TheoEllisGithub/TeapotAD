@@ -73,7 +73,7 @@ void SceneDiffuse::setLightParams(QuatCamera camera)
 	//Diffus = LD * KO * COS()
 	//Secular = KS*LS*COS (power n) ()
 
-	vec3 worldLight = vec3(5.0f,5.0f,0.0f); 
+	vec3 worldLight = vec3(5.0f,10.0f,0.0f); 
 
 	
 	prog.setUniform("Ld", 0.5f, 0.5f, 0.5f);// RGB (Red, green ,blue)
