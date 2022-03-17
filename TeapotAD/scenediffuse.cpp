@@ -46,7 +46,7 @@ void SceneDiffuse::initScene(QuatCamera camera)
 
 	//A matrix to move the teapot lid upwards
 	glm::mat4 lid = glm::mat4(1.0);
-	lid *= glm::translate(vec3(0.0,1.0,0.0));
+	lid *= glm::translate(vec3(0.0,0.0,0.0));
 
 	//Create the teapot with translated lid
 	teapot = new VBOTeapot(16,lid);
@@ -73,20 +73,16 @@ void SceneDiffuse::setLightParams(QuatCamera camera)
 	//Diffus = LD * KO * COS()
 	//Secular = KS*LS*COS (power n) ()
 
-	vec3 worldLight = vec3(5.0f,5.0f,5.0f); 
+	vec3 worldLight = vec3(5.0f,5.0f,0.0f); 
 
 	
-	prog.setUniform("Ld", 0.9f, 0.9f, 0.9f);// RGB (Red, green ,blue)
+	prog.setUniform("Ld", 0.5f, 0.5f, 0.5f);// RGB (Red, green ,blue)
 	
 	prog.setUniform("La", 0.5f, 0.5f, 0.5f);
-
-	
 
 	prog.setUniform("Ls", 0.5f, 0.5f, 0.5f);
 
 	prog.setUniform("LightPosition", worldLight );
-
-
 
 }
 

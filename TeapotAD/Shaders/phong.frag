@@ -39,27 +39,31 @@ void main() {
    vec4 Id = vec4(Ld,1.0) * max(dot(N,L), 0.0);// Why do we need vec4(vec3)?
    Id = clamp(Id, 0.0, 1.0); // What is the role of clamp function? Why do we need it? 
 
-   //Multiply the Reflectivity by the Diffuse intensity
+   vec4 Id2 = vec4(La, 1.0);
+   Id2 = clamp(Id2, 0.0, 1.0);
 
-   
+   vec4 Id3 = vec4(Ls, 1.0);
+   Id3 = clamp(Id3, 0.0, 1.0);
+  
    vec3 R = reflect(-L, N);   //lightPos, vertPos,   (reflection)
 
    
    float newP = dot(normalize(R), normalize(playerVision));
 
 
+   ////////////////////////////////////Lighting stuff//////////////////////////////////////
+
+   //FragColour = vec4(Kd,1.0) * Id;						//Diffuse
+
+   //FragColour = Id2 * vec4(Ka, 1.0);						//Ambient
+
+   FragColour = vec4(Ks,1.0) * Id3 * pow(newP, 10) ;        //specular
+
+
    //////////////////////////////////////////////////////////////////////////
 
-   //FragColour = vec4(Kd,1.0) * Id;                //Diffuse
-
-   //FragColour = vec4(La, 1.0) * vec4(Ka, 1.0);    //Ambient
-
-   FragColour = vec4(Ks,1.0) * vec4(Ls, 1.0) * pow(newP, 10) ;      //specular
-
-   //////////////////////////////////////////////////////////////////////////
-
-
-   //FragColour = vec4(Kd,1.0) * Id + vec4(La, 1.0) * vec4(Ka, 1.0);
+   //They dont work together, this is frustrating
+   //FragColour = (vec4(Kd,1.0) * Id) + (Id2 * vec4(Ka, 1.0)) + (vec4(Ks,1.0) * Id3 * pow(newP, 10));
 
    
 }

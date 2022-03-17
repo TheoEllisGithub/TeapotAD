@@ -58,6 +58,8 @@ static void key_callback(GLFWwindow* window, int key, int cancode, int action, i
 void scroll_callback(GLFWwindow *window, double x, double y)
 {
 			camera.zoom((float)y*0.5f);
+
+			
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
